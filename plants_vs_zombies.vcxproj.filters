@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="T_Engine">
+      <UniqueIdentifier>{fae6c0af-9a32-4243-a08b-f947d089b0c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyMenus">
+      <UniqueIdentifier>{672420e9-cf7e-4824-886b-48c2781a6362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyRole">
+      <UniqueIdentifier>{72dd7b35-9d4d-4d9d-9204-8d5f49704f90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyScene">
+      <UniqueIdentifier>{198127ff-2fb0-49f2-b16e-598f16ba2c57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyScene\Level1">
+      <UniqueIdentifier>{3c681b11-3a2c-4e90-ad62-af66feac13ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyScene\Level2">
+      <UniqueIdentifier>{41724569-646b-499b-89b8-96416c6ea216}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyScene\Level3">
+      <UniqueIdentifier>{df0f1fcf-4034-46d0-8808-3c1ccf03f5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyRole\Plant">
+      <UniqueIdentifier>{c3a35c8f-b309-4e54-867e-58c3c478cdd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyRole\Sun">
+      <UniqueIdentifier>{99cba054-f62e-49a5-b517-2e245c9ede81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyRole\Zombie">
+      <UniqueIdentifier>{289023cf-1273-4d37-ae11-f1a0faf2cd88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyRole\ZombieHand">
+      <UniqueIdentifier>{5da042d4-7540-472d-8c39-ccab128e1c89}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="T_Engine\T_AI.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Audio.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Display.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Engine.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Graph.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Map.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Menu.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Scene.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Sprite.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="T_Engine\T_Util.cpp">
+      <Filter>T_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutMenu.cpp">
+      <Filter>MyMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpMenu.cpp">
+      <Filter>MyMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="StartMenu.cpp">
+      <Filter>MyMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitMenu.cpp">
+      <Filter>MyMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="PassGameMenu.cpp">
+      <Filter>MyMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="Level1.cpp">
+      <Filter>MyScene\Level1</Filter>
+    </ClCompile>
+    <ClCompile Include="Level1Grass.cpp">
+      <Filter>MyScene\Level1</Filter>
+    </ClCompile>
+    <ClCompile Include="Level2.cpp">
+      <Filter>MyScene\Level2</Filter>
+    </ClCompile>
+    <ClCompile Include="Level3.cpp">
+      <Filter>MyScene\Level3</Filter>
+    </ClCompile>
+    <ClCompile Include="Plant.cpp">
+      <Filter>MyRole\Plant</Filter>
+    </ClCompile>
+    <ClCompile Include="PlantCardBoard.cpp">
+      <Filter>MyRole\Plant</Filter>
+    </ClCompile>
+    <ClCompile Include="Sun.cpp">
+      <Filter>MyRole\Sun</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>MyRole\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieHand.cpp">
+      <Filter>MyRole\ZombieHand</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_AI.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Audio.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Config.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Display.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Engine.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Graph.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Layer.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Map.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Menu.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Scene.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Sprite.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="T_Engine\T_Util.h">
+      <Filter>T_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutMenu.h">
+      <Filter>MyMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpMenu.h">
+      <Filter>MyMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitMenu.h">
+      <Filter>MyMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="StartMenu.h">
+      <Filter>MyMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="PassGameMenu.h">
+      <Filter>MyMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1.h">
+      <Filter>MyScene\Level1</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1Grass.h">
+      <Filter>MyScene\Level1</Filter>
+    </ClInclude>
+    <ClInclude Include="Level2.h">
+      <Filter>MyScene\Level2</Filter>
+    </ClInclude>
+    <ClInclude Include="Level3.h">
+      <Filter>MyScene\Level3</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantCardBoard.h">
+      <Filter>MyRole\Plant</Filter>
+    </ClInclude>
+    <ClInclude Include="Plant.h">
+      <Filter>MyRole\Plant</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
+      <Filter>MyRole\Sun</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>MyRole\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieHand.h">
+      <Filter>MyRole\ZombieHand</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
