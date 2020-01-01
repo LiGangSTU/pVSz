@@ -30,6 +30,8 @@ public :
 	bool Lose();
 	// 加入僵尸
 	void activeZombieToAppear();
+	// 清除场景中的数据
+	void clearLevel();
 protected:
 	int zombiesCount[5] = {0};
 protected: 

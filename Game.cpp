@@ -61,6 +61,7 @@ void Game::GameLogic()
 		{
 			loseGame_buffer.Play(false);
 			GameState = GAME_OVER;
+			startTime = GetTickCount();
 		}
 	}
 
@@ -75,6 +76,12 @@ void Game::GameLogic()
 			win_buffer.Play(false);
 			LevelState = LEVEL_2_3;
 		}
+		else if (level2->Lose())
+		{
+			loseGame_buffer.Play(false);
+			GameState = GAME_OVER;
+			startTime = GetTickCount();
+		}
 	}
 
 	else if (GameState == GAME_ADVENTURE && LEVEL_3 == LevelState)
@@ -86,7 +93,14 @@ void Game::GameLogic()
 		if (level3->Win())
 		{
 			win_buffer.Play(false);
-			LevelState = LEVEL_2_3;
+			// TODO 绘制通关画面
+			LevelState = LEVEL_3_4;
+		}
+		else if (level3->Lose())
+		{
+			loseGame_buffer.Play(false);
+			GameState = GAME_OVER;
+			startTime = GetTickCount();
 		}
 	}
 }
@@ -143,8 +157,18 @@ void Game::GamePaint(HDC hdc)
 	}
 	else if (GameState == GAME_OVER)
 	{
-		// TODO
+		// TODO 清除数据
+		// level1->RemoveAll();
+		/*level1->clearLevel();*/
+		delete level1;
+		level1 = NULL;
 		overimg->PaintImage(hdc, 0, 0,WIN_WIDTH,WIN_HEIGHT);
+		endTime = GetTickCount();
+		if (endTime - startTime > 3000)
+		{
+			GameInit();
+			
+		}
 	}
 }
 
@@ -258,7 +282,7 @@ void Game::GameMouseAction(int x, int y, int Action)
 					LevelState = LEVEL_3;
 				}
 			}
-			else if (LevelState == level_3_4)
+			else if (LevelState == LEVEL_3_4)
 			{
 				int index = passGameMenu->MenuMouseClick(x, y);
 				if (index >= 0)
@@ -406,7 +430,7 @@ void Game::MouseMoveHandle(int x, int y, int Action, int theGameState)
 		{
 			level3->mouseMove(x, y);
 		}
-		else if (LevelState == LEVEL_1_2 || LevelState == LEVEL_2_3 || LevelState == level_3_4)
+		else if (LevelState == LEVEL_1_2 || LevelState == LEVEL_2_3 || LevelState == LEVEL_3_4)
 		{
 			passGameMenu->MenuMouseMove(x, y);
 		}

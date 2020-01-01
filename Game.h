@@ -41,6 +41,8 @@ private:
 	void initLevels();
 	//处理鼠标在菜单界面的移动
 	void MouseMoveHandle(int x, int y, int Action, int GameState);
+	//重新初始化
+	void reInit();
 private :
 	int wndHeight, wndWidth;	//窗体宽高
 	int clickMenuIndex;			//用户点击的菜单索引，用其指示那个菜单闪烁
@@ -69,5 +71,9 @@ private :
 
 	// 结束背景
 	T_Graph* overimg = new T_Graph(L".\\res\\gameover\\ZombiesWon.png");
+
+	// 计时
+	DWORD startTime;
+	DWORD endTime;
 };
 

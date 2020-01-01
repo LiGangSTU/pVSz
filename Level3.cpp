@@ -51,7 +51,7 @@ void Level3::init(HWND m_hWnd)
 	initZombie();
 	initBoard();
 	initSound(m_hWnd);
-	T_Util::GetRandomNum(8, ZOMBIE_APPEAR_X);
+	//T_Util::GetRandomNum(8, ZOMBIE_APPEAR_X);
 	dirt = new T_Sprite(LEVEL1_DIRT, 48, 31);
 	dirt->SetActive(true);
 	dirt->SetVisible(false);
@@ -81,7 +81,7 @@ void Level3::start(HDC hdc)
 	//绘制透明植物
 	if (blockIndex >= 0 && plant != NULL)
 	{
-		plant->PaintPic(hdc, LEVEL2_VALID_BLOCKPOS[blockIndex]);
+		plant->PaintPic(hdc, LEVEL3_VALID_BLOCKPOS[blockIndex]);
 	}
 	//绘制选中植物
 	if (plant != NULL)
@@ -100,7 +100,6 @@ void Level3::start(HDC hdc)
 	{
 		//场景移动
 		sceneMove();
-
 		return;
 	}
 	if (canMakeSun)
@@ -224,7 +223,7 @@ void Level3::changeSpriteState()
 			}
 
 			//当僵尸碰撞到 植物  僵尸攻击植物
-			if ((*p)->CollideWith(*p2) && (*p)->getRemianLive() > 0)
+			if ((*p2)->getValidY() == (*p)->getValidY() && (*p)->CollideWith(*p2) && (*p)->getRemianLive() > 0)
 			{
 				(*p)->setState(ATTACK_STATE);
 				(*p)->attack(*p2);
@@ -258,7 +257,9 @@ void Level3::mouseMove(int x, int y)
 
 void Level3::mouseClick(int x, int y)
 {
-	int plantType = pcb.MenuMouseClick(x, y);	//点击植物槽时，获取植物类型
+	int plantType = pcb.MenuMouseClick(x, y);
+	//点击植物槽时，获取植物类型
+	// 考虑判断重叠植物
 	if (plantType >= 0 && pcb.getSelected())	//当获取到了植物类型   并且  植物槽的状态为选中时  才进行创建植物  但是并没有添加进场景中
 	{
 		plant = new Plant(plantStatic[plantType]);
@@ -277,6 +278,7 @@ void Level3::mouseClick(int x, int y)
 	{
 		plant = NULL;
 	}
+	// TODO 加入坚果墙的帧序列
 	//当  植物槽为选中状态时并且点击了草坪   将植物添加进场景
 	addPlant();
 	vector<Sun*>::iterator p;
@@ -325,6 +327,26 @@ bool Level3::Win()
 		{
 			return true;
 		}
+	}
+	return false;
+}
+
+bool Level3::Lose()
+{
+	// 如果僵尸不为空才判断
+	if (!zombies.empty())
+	{
+		// 遍历所有的僵尸，是否触及线
+		vector<Zombie*>::iterator p;
+		for (p = zombies.begin(); p != zombies.end(); p++)
+		{
+			// 如果突破防线，则失败
+			if ((*p)->GetX() + (*p)->GetRatioSize().cx < 0)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	return false;
 }
@@ -600,9 +622,10 @@ void Level3::addPlant()
 		{
 			plant2_buffer.Play(false);
 		}
-		plant->SetPosition(LEVEL2_VALID_BLOCKPOS[blockIndex][0] +
-			(LEVEL2_VALID_BLOCKPOS[blockIndex][2] - plant->GetWidth()) / 2, LEVEL2_VALID_BLOCKPOS[blockIndex][1]);
+		plant->SetPosition(LEVEL3_VALID_BLOCKPOS[blockIndex][0] +
+			(LEVEL3_VALID_BLOCKPOS[blockIndex][2] - plant->GetWidth()) / 2, LEVEL3_VALID_BLOCKPOS[blockIndex][1]);
 		plant->init(plant->getType());	//开始初始化植物
+		// TODO 判断植物是否可以加入
 		plants.push_back(plant);		//保存进植物类
 		int num = blockIndex / 9;
 		plant->setValidY(num + 1);
@@ -614,9 +637,9 @@ void Level3::addPlant()
 		plantLayer.z_order = this->getSceneLayers()->size() + 1;
 		this->Insert(plantLayer, 2);//添加进场景
 		pcb.setSelected(false);		//设置植物槽为未选中
-		dirt->SetPosition(LEVEL2_VALID_BLOCKPOS[blockIndex][0] +
-			(LEVEL2_VALID_BLOCKPOS[blockIndex][2] - plant->GetWidth()) / 2 + 8,
-			LEVEL2_VALID_BLOCKPOS[blockIndex][1] + plant->GetHeight());
+		dirt->SetPosition(LEVEL3_VALID_BLOCKPOS[blockIndex][0] +
+			(LEVEL3_VALID_BLOCKPOS[blockIndex][2] - plant->GetWidth()) / 2 + 8,
+			LEVEL3_VALID_BLOCKPOS[blockIndex][1] + plant->GetHeight());
 		dirt->SetVisible(true);
 		this->sunPower -= plant->getCostSun();
 		pcb.addSunPower(-plant->getCostSun());

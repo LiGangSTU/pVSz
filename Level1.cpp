@@ -49,7 +49,7 @@ void Level1::init(HWND m_hWnd)
 	initZombie();
 	initBoard();
 	initSound(m_hWnd);
-	T_Util::GetRandomNum(8, ZOMBIE_APPEAR_X);
+	//T_Util::GetRandomNum(8, ZOMBIE_APPEAR_X);
 	dirt = new T_Sprite(LEVEL1_DIRT, 48, 31);
 	dirt->SetActive(true);
 	dirt->SetVisible(false);
@@ -380,7 +380,6 @@ void Level1::changeSpriteState()
 	for (p=zombies.begin(); p!=zombies.end(); p++)
 	{
 		//if((*p)->CollideWith(this->getBarrier())) (*p)->setState(ATTACK_STATE);
-
 		vector<Plant*>::iterator p2;
 		for (p2 = plants.begin(); p2 != plants.end(); p2++)
 		{
@@ -494,7 +493,7 @@ bool Level1::Win()
 	}
 	return false;
 }
-// 第一关是否失败
+// 关卡是否失败
 bool Level1::Lose()
 {
 	// 如果僵尸不为空才判断
@@ -533,6 +532,27 @@ void Level1::activeZombieToAppear()
 		}
 	}
 }
+
+void Level1::clearLevel()
+{
+	// 清除僵尸
+	if (!zombies.empty())
+	{
+		zombies.clear();
+		return;
+	}
+	if (!zombieLayers.empty())
+	{
+		zombieLayers.clear();
+	}
+
+	//vector<Zombie*>::iterator p;
+	/*for (p = zombies.begin(); p != zombies.end(); ++p)
+	{
+		zombies.erase(p);
+	}*/
+}
+
 //处理角色的死亡状态
 void Level1::handlleSpriteDead()
 {

@@ -97,6 +97,14 @@ void Plant::init(int type)
 	else if (type == WALLNUT)
 	{
 		standState = new T_Sprite(PLANTSTAND[WALLNUT].img, PLANTSTAND[WALLNUT].frameWidth, PLANTSTAND[WALLNUT].frameHeight);
+		standState->SetPosition(this->X, this->Y);
+		standState->SetSequence(WALLNUT_FRAME, 132);
+		// TODO 加入状态
+		this->power = PLANT_POWER[type];
+		this->remainLive = PLANTE_REMAINLIVE[type];
+		this->costSun = COSTSUN[type];
+		this->defence = PLANT_DEFENCE[type];
+		state = PLANT_STAND_STATE;
 	}
 }
 //按照不同的状态进行不同的帧循环
@@ -200,6 +208,7 @@ void Plant::Draw(HDC hdc)
 			{
 				workState->Draw(hdc);
 			}
+			// TODO 其他状态的绘制
 		}
 	}
 }

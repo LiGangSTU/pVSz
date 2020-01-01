@@ -15,6 +15,7 @@ public:
 	void mouseClick(int x, int y);
 	int getClickBlock(int x, int y);
 	bool Win();
+	bool Lose();
 	void activeZombieToAppear();
 	void initSound(HWND m_hWnd);	//初始化音效
 	void initZombie();				//初始化level1的僵尸

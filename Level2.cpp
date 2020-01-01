@@ -49,7 +49,7 @@ void Level2::init(HWND m_hWnd)
 	initZombie();
 	initBoard();
 	initSound(m_hWnd);
-	T_Util::GetRandomNum(8, ZOMBIE_APPEAR_X);
+	//T_Util::GetRandomNum(8, ZOMBIE_APPEAR_X);
 	dirt = new T_Sprite(LEVEL1_DIRT, 48, 31);
 	dirt->SetActive(true);
 	dirt->SetVisible(false);
@@ -222,7 +222,7 @@ void Level2::changeSpriteState()
 			}
 
 			//当僵尸碰撞到 植物  僵尸攻击植物
-			if ((*p)->CollideWith(*p2) && (*p)->getRemianLive() > 0)
+			if ((*p2)->getValidY() == (*p)->getValidY() && (*p)->CollideWith(*p2) && (*p)->CollideWith(*p2) && (*p)->getRemianLive() > 0)
 			{
 				(*p)->setState(ATTACK_STATE);
 				(*p)->attack(*p2);
@@ -319,12 +319,42 @@ bool Level2::Win()
 {
 	if (curentZombieNumber == 9)
 	{
-		if (zombies.size() == 0)
+		/*vector<Zombie*>::iterator p;
+		for (p = zombies.begin();p!=zombies.end();p++)
+		{
+			if ((*p)->IsDead())
+			{
+				zombies.erase(p);
+			}
+		}*/
+		if (zombies.empty())
 		{
 			return true;
 		}
+		return true;
 	}
 	return false;
+}
+
+bool Level2::Lose()
+{
+	// 如果僵尸不为空才判断
+	if (!zombies.empty())
+	{
+		// 遍历所有的僵尸，是否触及线
+		vector<Zombie*>::iterator p;
+		for (p = zombies.begin(); p != zombies.end(); p++)
+		{
+			// 如果突破防线，则失败
+			if ((*p)->GetX() + (*p)->GetRatioSize().cx < 0)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	return false;
+
 }
 
 void Level2::activeZombieToAppear()
@@ -343,12 +373,12 @@ void Level2::activeZombieToAppear()
 		zombiesCount[curentZombieNumber]++;
 		if (curentZombieNumber == 0 && zombiesCount[curentZombieNumber] > 1000)
 		{
-			addZombie(NORMAL_ZOMBIE, number);
+			addZombie(NORMAL_ZOMBIE);
 			curentZombieNumber++;
 		}
 		else if (zombiesCount[curentZombieNumber] > 1000 || (zombies.size() == 0 && zombiesCount[curentZombieNumber] > 200))
 		{
-			addZombie(NORMAL_ZOMBIE, number);
+			addZombie(NORMAL_ZOMBIE);
 			curentZombieNumber++;
 		}
 	}
