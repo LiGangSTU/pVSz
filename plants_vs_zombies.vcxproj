@@ -181,6 +181,7 @@
     <ClInclude Include="Plant.h" />
     <ClInclude Include="PlantCardBoard.h" />
     <ClInclude Include="QuitMenu.h" />
+    <ClInclude Include="Role.h" />
     <ClInclude Include="StartMenu.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="T_Engine\T_AI.h" />

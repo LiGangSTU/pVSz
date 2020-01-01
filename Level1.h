@@ -25,7 +25,10 @@ public :
 	void mouseMove(int x, int y);
 	void mouseClick(int x, int y);
 	int getClickBlock(int x, int y);
+	// 胜负判断
 	bool Win();
+	bool Lose();
+	// 加入僵尸
 	void activeZombieToAppear();
 protected:
 	int zombiesCount[5] = {0};
@@ -94,6 +97,6 @@ protected:
 	int blockIndex;					//描述点击的草坪块索引
 	bool canMakeSun;
 
-	int winCount = 0;
+	//int winCount = 0;
 };
 

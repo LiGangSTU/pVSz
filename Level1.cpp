@@ -109,6 +109,7 @@ void Level1::initZombie()
 {
 	for (int i = 0; i < LEVEL1_ZOMBIE_NUMBER; i++)
 	{
+		// TODO 根据僵尸类型随机数字，导入不同的僵尸静态数据
 		int type = rand() % 3;
 		Zombie *zombie = new Zombie(normalZombieStatic[type]);
 		zombie->SetSequence(NORMAL_ZOMBIE_STATIC_FRAME[type], 132);
@@ -490,6 +491,26 @@ bool Level1::Win()
 			gameBgm_buffer.Stop();
 			return true;
 		}
+	}
+	return false;
+}
+// 第一关是否失败
+bool Level1::Lose()
+{
+	// 如果僵尸不为空才判断
+	if (!zombies.empty())
+	{
+		// 遍历所有的僵尸，是否触及线
+		vector<Zombie*>::iterator p;
+		for ( p = zombies.begin(); p != zombies.end(); p++)
+		{
+			// 如果突破防线，则失败
+			if ((*p)->GetX() + (*p)->GetRatioSize().cx < 0 )
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	return false;
 }

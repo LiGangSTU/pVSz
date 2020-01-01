@@ -57,6 +57,11 @@ void Game::GameLogic()
 			win_buffer.Play(false);
 			LevelState = LEVEL_1_2;
 		}
+		else if (level1->Lose())
+		{
+			loseGame_buffer.Play(false);
+			GameState = GAME_OVER;
+		}
 	}
 
 	else if (GameState == GAME_ADVENTURE && LEVEL_2 == LevelState)
@@ -135,6 +140,11 @@ void Game::GamePaint(HDC hdc)
 	else if (GameState == GAME_ADVENTURE && LevelState == LEVEL_3)
 	{
 		level3->start(hdc);
+	}
+	else if (GameState == GAME_OVER)
+	{
+		// TODO
+		overimg->PaintImage(hdc, 0, 0,WIN_WIDTH,WIN_HEIGHT);
 	}
 }
 

@@ -209,5 +209,8 @@
     <ClInclude Include="ZombieHand.h">
       <Filter>MyRole\ZombieHand</Filter>
     </ClInclude>
+    <ClInclude Include="Role.h">
+      <Filter>MyRole</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

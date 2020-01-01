@@ -43,6 +43,7 @@ private:
 	T_Sprite *dieState;				//死亡状态的僵尸
 	T_Sprite *lostHeadAttackState;	//掉头攻击状态的僵尸
 	T_Sprite *head;					//头掉落动画
+	// TODO 独特的Sprite ，顺便修改
 	vector<T_Sprite*> zombieStates;	//僵尸的不同状态
 	unsigned int timeCount;			//控制僵尸速度
 	int validY;						//僵尸所在的有效行数  从1开始

@@ -67,5 +67,7 @@ private :
 	AudioDXBuffer loseGame_buffer;				//”Œœ∑ ß∞‹±≥æ∞“Ù–ß
 	AudioDXBuffer win_buffer;
 
+	// Ω· ¯±≥æ∞
+	T_Graph* overimg = new T_Graph(L".\\res\\gameover\\ZombiesWon.png");
 };
 

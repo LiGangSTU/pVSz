@@ -100,6 +100,15 @@ void Zombie::init(int type)
 		zombieStates.push_back(lostHeadAttackState);
 		zombieStates.push_back(head);
 	}
+	// TODO 加入其他僵尸状态内容
+	/*else if (type == FLAG_ZOMBIE)
+	{
+		
+	}
+	else if (type == PAPER_ZOM)
+	{
+		
+	}*/
 }
 //僵尸行走
 void Zombie::walk()
@@ -115,6 +124,7 @@ void Zombie::walk()
 //僵尸吃植物
 void Zombie::attack(Plant * plant)
 {
+	// TODO 加入攻击音效
 	if (state == ATTACK_STATE)
 	{
 		timeCount++;
@@ -159,6 +169,7 @@ void Zombie::setState(int state)
 	this->state = state;
 }
 
+// TODO 根据不同的僵尸反应会有变化 
 //遇到植物
 bool Zombie::CollideWith(Plant * plant, int distance)
 {
@@ -236,6 +247,11 @@ void Zombie::Draw(HDC hdc)
 			{
 				lostHeadAttackState->Draw(hdc);
 			}
+			// TODO 更多状态绘制的画面
+			/*else if (state == )
+			{
+				
+			}*/
 		}
 	}
 }
@@ -301,6 +317,7 @@ void Zombie::LoopFrame(bool ahead)
 			this->dead = true;
 		}
 	}
+	// TODO 特殊僵尸的帧序列绘制
 }
 
 bool Zombie::LoopFrameOnce(bool ahead)
@@ -322,4 +339,5 @@ bool Zombie::LoopFrameOnce(bool ahead)
 		return lostHeadAttackState->LoopFrameOnce(ahead);
 	}
 	else return this->LoopFrameOnce(true);
+	// TODO 特殊状态
 }
